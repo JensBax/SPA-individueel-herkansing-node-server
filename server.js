@@ -10,7 +10,7 @@ var userroutes_v1 = require('./api/user.routes.v1');
 var gameroutes_v1 = require('./api/games.routes.v1');
 var character_v1 = require('./api/characters.routes.v1');
 var developer_v1 = require('./api/developers.routes.v1');
-// var auth_routes_v1 = require('./api/authentication.routes.v1');
+var auth_routes_v1 = require('./api/authentication.routes.v1');
 var config = require('./config/env/env');
 // var expressJWT = require('express-jwt');
 
@@ -75,6 +75,7 @@ app.use('/api/v1', userroutes_v1);
 app.use('/api/v1', gameroutes_v1);
 app.use('/api/v1', character_v1);
 app.use('/api/v1', developer_v1);
+app.use('/api/v1', auth_routes_v1);
 
 // Errorhandler voor express-jwt errors
 // Wordt uitgevoerd wanneer err != null; anders door naar next().
