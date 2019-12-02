@@ -27,13 +27,13 @@ router.post('/login', function(req, res) {
                     );
                     var k = i;
                     var sendUsername = users[k].username;
-                    var sendGender = users[k].gender;
+                    var sendPassword = users[k].password;
                     var id = users[k]._id;
                     i = users.length;
                     res.status(200).json({
                         id: id,
                         username: sendUsername,
-                        gender: sendGender,
+                        password: sendPassword,
                         token: token
                     }); 
                 }
