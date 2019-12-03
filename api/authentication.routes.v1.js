@@ -28,13 +28,15 @@ router.post('/login', function(req, res) {
                     var k = i;
                     var sendUsername = users[k].username;
                     var sendPassword = users[k].password;
-                    var id = users[k]._id;
+                    var sendGames = users[k].favoriteGames;
+                    var _id = users[k]._id;
                     i = users.length;
                     res.status(200).json({
-                        id: id,
+                        _id: _id,
                         username: sendUsername,
                         password: sendPassword,
-                        token: token
+                        token: token,
+                        favoriteGames: sendGames
                     }); 
                 }
             }

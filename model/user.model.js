@@ -9,7 +9,12 @@ const UserSchema = new Schema({
     password: {
         type: String, 
         required: true
-    }
+    },
+    favoriteGames: [{
+        name: String,
+        description: String,
+        imagePath: String, 
+    }]
 });
 
 

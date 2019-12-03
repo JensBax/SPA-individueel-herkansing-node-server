@@ -43,6 +43,7 @@ routes.get('/users/:id', function (req, res) {
 routes.post('/register', function(req, res){
     var username = req.body.username;
     console.log(username);
+    console.log(req.body)
     var k = 0;
     User.find({})
     .then(function(users) {
@@ -52,8 +53,10 @@ routes.post('/register', function(req, res){
                     var new_user = new User({
                         id: req.body.id,
                         username: req.body.username,
-                        password: cryptopassword
+                        password: cryptopassword,
+                        favoriteGames: []
                     });
+                    console.log(new_user)
                     new_user.save(function(err, task){
                     if (err)
                         res.send(err);
@@ -92,7 +95,23 @@ routes.post('/register', function(req, res){
 // Vorm van de URL: PUT http://hostname:3000/api/v1/users/23
 //
 routes.put('/users/:id', function (req, res) {
+        
+    res.contentType('application/json');
+    var id = req.params.id;
 
+    var update = {
+        "username" : req.body.username,
+        "password" : req.body.password,
+        "favoriteGames" : req.body.favoriteGames
+    };
+    User.findById(id)
+    .then( user => {
+        user.set(update);
+        user.save();
+        res.status(200).json(user);
+        
+    })
+    .catch((error) => res.status(401).json(error));
 });
 
 //
